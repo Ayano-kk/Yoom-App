@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="zh-CN" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>沄荣科技-首页原型</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: "#2F7BFF",
+              brandDeep: "#1E5DFF"
+            },
+            boxShadow: {
+              card: "0 8px 24px rgba(16, 24, 40, 0.06)",
+              soft: "0 1px 12px rgba(15, 23, 42, 0.06)"
+            }
+          }
+        }
+      };
+    </script>
+  </head>
+  <body class="min-h-screen bg-slate-100">
+    <div id="home" class="mx-auto min-h-screen w-full max-w-[480px] bg-[#F5F8FF] shadow-2xl relative overflow-hidden">
+      <header class="bg-gradient-to-r from-[#1B66FF] via-[#2F7BFF] to-[#44A3FF] px-4 pt-5 pb-4">
+        <div class="flex items-center justify-between">
+          <h1 class="text-white text-xl font-semibold tracking-wide">沄荣科技</h1>
+          <a href="#agent-list" class="rounded-full bg-white/18 backdrop-blur px-3 py-1.5 text-white text-sm font-semibold border border-white/30 active:scale-95 transition">
+            🤖 AI助手
+          </a>
+        </div>
+      </header>
+
+      <main class="pb-28">
+        <section class="px-4 -mt-3">
+          <div class="h-12 rounded-2xl bg-white shadow-soft border border-slate-100 flex items-center px-4">
+            <svg class="w-5 h-5 text-slate-400 mr-2" viewBox="0 0 24 24" fill="none">
+              <path d="M21 21L16.65 16.65M18 11C18 14.866 14.866 18 11 18C7.13401 18 4 14.866 4 11C4 7.13401 7.13401 4 11 4C14.866 4 18 7.13401 18 11Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+            <span class="text-sm text-slate-400">搜索智能体 / 关键词搜索</span>
+          </div>
+        </section>
+
+        <section class="px-4 mt-4">
+          <div class="rounded-2xl p-5 bg-gradient-to-br from-[#0B1636] via-[#132A5A] to-[#1C3B7A] text-white shadow-card">
+            <div class="text-xs text-cyan-300 tracking-[0.25em] mb-2">AI RECOMMEND</div>
+            <div class="text-2xl font-bold leading-tight">积墨AI智能体推荐</div>
+            <div class="mt-2 text-white/70 text-sm">高效协作 · 快速生成 · 企业级能力</div>
+            <div class="mt-4 flex items-center gap-1.5">
+              <span class="w-5 h-1.5 rounded-full bg-white"></span>
+              <span class="w-2 h-2 rounded-full bg-white/50"></span>
+              <span class="w-2 h-2 rounded-full bg-white/30"></span>
+            </div>
+          </div>
+        </section>
+
+        <section id="agent-list" class="px-4 mt-5">
+          <div class="flex items-center justify-between text-sm text-slate-500">
+            <a href="#agent-list" class="relative text-brand font-bold pb-2">
+              全部
+              <span class="absolute left-0 right-0 -bottom-0.5 mx-auto h-1 w-6 rounded-full bg-brand"></span>
+            </a>
+            <button data-toast="已切换到 客服 分类" class="pb-2">客服</button>
+            <button data-toast="已切换到 文案 分类" class="pb-2">文案</button>
+            <button data-toast="已切换到 数据 分类" class="pb-2">数据</button>
+            <button data-toast="已切换到 办公 分类" class="pb-2">办公</button>
+            <button data-toast="更多分类开发中" class="pb-2">更多</button>
+          </div>
+        </section>
+
+        <section class="px-4 mt-4 space-y-3">
+          <article class="bg-white rounded-2xl p-4 shadow-card border border-slate-100">
+            <div class="flex gap-3">
+              <div class="w-11 h-11 rounded-xl bg-orange-100 flex items-center justify-center text-xl">🎧</div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2">
+                  <h3 class="text-base font-semibold text-slate-800">智能客服助手</h3>
+                  <span class="text-xs px-2 py-0.5 rounded-full bg-orange-100 text-orange-500 font-medium">热门</span>
+                </div>
+                <p class="text-sm text-slate-500 mt-1">7x24小时在线响应，自动解答常见问题并转人工。</p>
+              </div>
+            </div>
+            <div class="flex justify-end mt-3">
+              <button data-toast="正在打开：智能客服助手" class="h-9 px-4 rounded-xl bg-brand text-white text-sm font-semibold active:scale-95 transition">
+                立即使用
+              </button>
+            </div>
+          </article>
+
+          <article class="bg-white rounded-2xl p-4 shadow-card border border-slate-100">
+            <div class="flex gap-3">
+              <div class="w-11 h-11 rounded-xl bg-blue-100 flex items-center justify-center text-xl">✍️</div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2">
+                  <h3 class="text-base font-semibold text-slate-800">文案生成助手</h3>
+                  <span class="text-xs px-2 py-0.5 rounded-full bg-blue-100 text-blue-600 font-medium">推荐</span>
+                </div>
+                <p class="text-sm text-slate-500 mt-1">广告语、活动标题、社媒内容一键生成，灵感不断。</p>
+              </div>
+            </div>
+            <div class="flex justify-end mt-3">
+              <button data-toast="正在打开：文案生成助手" class="h-9 px-4 rounded-xl bg-brand text-white text-sm font-semibold active:scale-95 transition">
+                立即使用
+              </button>
+            </div>
+          </article>
+
+          <article class="bg-white rounded-2xl p-4 shadow-card border border-slate-100">
+            <div class="flex gap-3">
+              <div class="w-11 h-11 rounded-xl bg-emerald-100 flex items-center justify-center text-xl">📊</div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2">
+                  <h3 class="text-base font-semibold text-slate-800">数据分析助手</h3>
+                  <span class="text-xs px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-600 font-medium">新上线</span>
+                </div>
+                <p class="text-sm text-slate-500 mt-1">自动洞察业务趋势，生成图表与摘要报告提升决策效率。</p>
+              </div>
+            </div>
+            <div class="flex justify-end mt-3">
+              <button data-toast="正在打开：数据分析助手" class="h-9 px-4 rounded-xl bg-brand text-white text-sm font-semibold active:scale-95 transition">
+                立即使用
+              </button>
+            </div>
+          </article>
+        </section>
+
+        <section class="px-4 mt-5">
+          <div class="flex gap-3">
+            <button data-toast="已减少推荐位（原型演示）" class="flex-1 h-10 rounded-full border border-brand text-brand bg-white font-semibold text-sm active:scale-95 transition">
+              减少
+            </button>
+            <button data-toast="已新增推荐位（原型演示）" class="flex-1 h-10 rounded-full bg-brand text-white font-semibold text-sm shadow-soft active:scale-95 transition">
+              新增
+            </button>
+          </div>
+        </section>
+
+        <section id="favorites" class="px-4 mt-5">
+          <div class="rounded-2xl bg-white border border-slate-100 shadow-soft p-4">
+            <div class="text-sm font-semibold text-slate-700">收藏</div>
+            <div class="text-xs text-slate-400 mt-1">此处为收藏模块占位，便于预览页面跳转体验。</div>
+          </div>
+        </section>
+
+        <section id="profile" class="px-4 mt-3">
+          <div class="rounded-2xl bg-white border border-slate-100 shadow-soft p-4">
+            <div class="text-sm font-semibold text-slate-700">我的</div>
+            <div class="text-xs text-slate-400 mt-1">此处为个人中心占位，便于预览页面跳转体验。</div>
+          </div>
+        </section>
+      </main>
+
+      <nav class="absolute bottom-0 left-0 right-0 h-16 bg-white border-t border-slate-100 shadow-[0_-4px_16px_rgba(15,23,42,0.05)]">
+        <div class="h-full grid grid-cols-4">
+          <a href="#home" class="flex flex-col items-center justify-center text-brand">
+            <span class="text-lg leading-none">🏠</span>
+            <span class="text-xs mt-1 font-semibold">首页</span>
+          </a>
+          <a href="#agent-list" class="flex flex-col items-center justify-center text-slate-400">
+            <span class="text-lg leading-none">🤖</span>
+            <span class="text-xs mt-1">智能体</span>
+          </a>
+          <a href="#favorites" class="flex flex-col items-center justify-center text-slate-400">
+            <span class="text-lg leading-none">⭐</span>
+            <span class="text-xs mt-1">收藏</span>
+          </a>
+          <a href="#profile" class="flex flex-col items-center justify-center text-slate-400">
+            <span class="text-lg leading-none">👤</span>
+            <span class="text-xs mt-1">我的</span>
+          </a>
+        </div>
+      </nav>
+    </div>
+    <div id="toast" class="fixed left-1/2 -translate-x-1/2 bottom-20 px-4 py-2 rounded-full bg-slate-900 text-white text-xs opacity-0 pointer-events-none transition-opacity duration-200"></div>
+    <script>
+      const toast = document.getElementById("toast");
+      let timer = null;
+      document.querySelectorAll("[data-toast]").forEach((item) => {
+        item.addEventListener("click", () => {
+          toast.textContent = item.getAttribute("data-toast");
+          toast.classList.remove("opacity-0");
+          toast.classList.add("opacity-100");
+          clearTimeout(timer);
+          timer = setTimeout(() => {
+            toast.classList.remove("opacity-100");
+            toast.classList.add("opacity-0");
+          }, 1200);
+        });
+      });
+    </script>
+  </body>
+</html>
