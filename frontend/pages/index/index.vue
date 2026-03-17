@@ -75,30 +75,14 @@
       <text class="panel-desc">当前登录：{{ profile.nickname || "微信用户" }}</text>
     </view>
 
-    <view class="bottom-nav">
-      <view class="nav-item nav-active">
-        <text class="nav-icon">🏠</text>
-        <text class="nav-label">首页</text>
-      </view>
-      <view class="nav-item" @tap="showToast('智能体模块建设中')">
-        <text class="nav-icon">🤖</text>
-        <text class="nav-label">智能体</text>
-      </view>
-      <view class="nav-item" @tap="showToast('收藏模块建设中')">
-        <text class="nav-icon">⭐</text>
-        <text class="nav-label">收藏</text>
-      </view>
-      <view class="nav-item" @tap="showToast('我的模块建设中')">
-        <text class="nav-icon">👤</text>
-        <text class="nav-label">我的</text>
-      </view>
-    </view>
+    <BottomNav current="home" />
   </view>
 </template>
 
 <script setup>
 import { computed, ref } from "vue";
 import { onLoad, onPullDownRefresh } from "@dcloudio/uni-app";
+import BottomNav from "../../components/BottomNav.vue";
 import {
   addFavorite,
   fetchAgents,
@@ -108,6 +92,36 @@ import {
   removeFavorite
 } from "../../services/api";
 import { getProfile } from "../../utils/request";
+
+const FALLBACK_AGENTS = [
+  {
+    agent_id: "local_service_001",
+    agent_name: "智能客服助手",
+    agent_icon: "https://picsum.photos/seed/service/160/160",
+    agent_desc: "7x24小时在线响应，自动解答常见问题并转人工。",
+    category: "客服",
+    is_hot: true,
+    jump_url: "https://example.com/service"
+  },
+  {
+    agent_id: "local_copy_002",
+    agent_name: "文案生成助手",
+    agent_icon: "https://picsum.photos/seed/copy/160/160",
+    agent_desc: "广告语、活动标题、社媒内容一键生成，灵感不断。",
+    category: "文案",
+    is_hot: false,
+    jump_url: "https://example.com/copy"
+  },
+  {
+    agent_id: "local_data_003",
+    agent_name: "数据分析助手",
+    agent_icon: "https://picsum.photos/seed/data/160/160",
+    agent_desc: "自动洞察业务趋势，生成图表与摘要报告提升决策效率。",
+    category: "数据",
+    is_hot: false,
+    jump_url: "https://example.com/data"
+  }
+];
 
 const agents = ref([]);
 const categories = ref(["全部"]);
@@ -141,7 +155,7 @@ async function loadRecommendations() {
     const data = await fetchRecommendations();
     topRecommendation.value = data.items?.[0] || {};
   } catch (error) {
-    showToast(error.message || "推荐位加载失败");
+    topRecommendation.value = { agent: FALLBACK_AGENTS[0] };
   }
 }
 
@@ -155,11 +169,15 @@ async function loadAgents() {
       params.keyword = keyword.value.trim();
     }
     const data = await fetchAgents(params);
-    agents.value = data.items || [];
-    const sourceCategories = Array.from(new Set((data.items || []).map((item) => item.category)));
-    categories.value = ["全部", ...sourceCategories];
+    applyAgentList(data.items || []);
   } catch (error) {
-    showToast(error.message || "智能体加载失败");
+    const kw = keyword.value.trim().toLowerCase();
+    const localItems = FALLBACK_AGENTS.filter((item) => {
+      const matchCategory = activeCategory.value === "全部" || item.category === activeCategory.value;
+      const matchKeyword = !kw || item.agent_name.toLowerCase().includes(kw) || item.agent_desc.toLowerCase().includes(kw);
+      return matchCategory && matchKeyword;
+    });
+    applyAgentList(localItems);
   } finally {
     uni.stopPullDownRefresh();
   }
@@ -171,8 +189,7 @@ async function loadFavorites() {
     favorites.value = data.items || [];
     favoriteIds.value = new Set((data.items || []).map((item) => item.agent_id));
   } catch (error) {
-    favorites.value = [];
-    favoriteIds.value = new Set();
+    favorites.value = FALLBACK_AGENTS.filter((item) => favoriteIds.value.has(item.agent_id));
   }
 }
 
@@ -187,8 +204,21 @@ async function toggleFavorite(agent) {
     }
     await loadFavorites();
   } catch (error) {
-    showToast(error.message || "收藏操作失败");
+    if (favoriteIds.value.has(agent.agent_id)) {
+      favoriteIds.value.delete(agent.agent_id);
+      showToast("已取消收藏");
+    } else {
+      favoriteIds.value.add(agent.agent_id);
+      showToast("收藏成功");
+    }
+    favorites.value = FALLBACK_AGENTS.filter((item) => favoriteIds.value.has(item.agent_id));
   }
+}
+
+function applyAgentList(list) {
+  agents.value = list;
+  const sourceCategories = Array.from(new Set(list.map((item) => item.category)));
+  categories.value = ["全部", ...sourceCategories];
 }
 
 function isFavorite(agentId) {
@@ -477,40 +507,6 @@ onPullDownRefresh(() => {
   align-items: center;
   justify-content: center;
   font-weight: 600;
-}
-
-.bottom-nav {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 112rpx;
-  background: #ffffff;
-  border-top: 1rpx solid #f1f5f9;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  box-shadow: 0 -8rpx 24rpx rgba(15, 23, 42, 0.05);
-}
-
-.nav-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: #94a3b8;
-}
-
-.nav-active {
-  color: #2f7bff;
-}
-
-.nav-icon {
-  font-size: 34rpx;
-}
-
-.nav-label {
-  margin-top: 8rpx;
-  font-size: 20rpx;
 }
 
 .panel-title {

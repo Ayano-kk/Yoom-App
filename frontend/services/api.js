@@ -51,3 +51,7 @@ export function removeFavorite(agent_id) {
 export function fetchFavorites() {
   return request("/user/favorites");
 }
+
+export function fetchRecent() {
+  return request("/user/recent");
+}

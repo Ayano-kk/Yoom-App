@@ -6,6 +6,27 @@
         "navigationStyle": "custom",
         "enablePullDownRefresh": true
       }
+    },
+    {
+      "path": "pages/agents/index",
+      "style": {
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": true
+      }
+    },
+    {
+      "path": "pages/favorites/index",
+      "style": {
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": true
+      }
+    },
+    {
+      "path": "pages/profile/index",
+      "style": {
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": true
+      }
     }
   ],
   "globalStyle": {
