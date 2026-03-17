@@ -1,0 +1,21 @@
+{
+  "name": "沄荣科技",
+  "appid": "__UNI__YOOM_APP",
+  "description": "沄荣科技小程序1.0",
+  "versionName": "1.0.0",
+  "versionCode": "100",
+  "transformPx": false,
+  "mp-weixin": {
+    "appid": "",
+    "setting": {
+      "urlCheck": false
+    },
+    "usingComponents": true
+  },
+  "h5": {
+    "title": "沄荣科技",
+    "devServer": {
+      "port": 5173
+    }
+  }
+}

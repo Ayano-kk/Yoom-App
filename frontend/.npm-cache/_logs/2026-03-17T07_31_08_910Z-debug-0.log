@@ -1,0 +1,66 @@
+0 verbose cli D:\nodejs\node.exe D:\nodejs\node_modules\npm\bin\npm-cli.js
+1 info using npm@11.9.0
+2 info using node@v24.14.0
+3 silly config load:file:D:\nodejs\node_modules\npm\npmrc
+4 silly config load:file:C:\Users\86137\Desktop\work\app\Yoom-App\frontend\.npmrc
+5 silly config load:file:C:\Users\86137\.npmrc
+6 silly config load:file:D:\nodejs\node_global\etc\npmrc
+7 verbose title npm install
+8 verbose argv "install" "--cache" ".npm-cache" "--no-audit" "--no-fund"
+9 verbose logfile logs-max:10 dir:C:\Users\86137\Desktop\work\app\Yoom-App\frontend\.npm-cache\_logs\2026-03-17T07_31_08_910Z-
+10 verbose logfile C:\Users\86137\Desktop\work\app\Yoom-App\frontend\.npm-cache\_logs\2026-03-17T07_31_08_910Z-debug-0.log
+11 silly logfile start cleaning logs, removing 1 files
+12 silly packumentCache heap:2348810240 maxSize:587202560 maxEntrySize:293601280
+13 silly idealTree buildDeps
+14 silly fetch manifest @dcloudio/uni-app@3.0.0-5000320260312001
+15 silly packumentCache full:https://registry.npmjs.org/@dcloudio%2funi-app cache-miss
+16 http cache https://registry.npmjs.org/@dcloudio%2funi-app 39ms (cache hit)
+17 silly packumentCache full:https://registry.npmjs.org/@dcloudio%2funi-app set size:8595646 disposed:false
+18 silly fetch manifest @dcloudio/types@3.4.29
+19 silly packumentCache full:https://registry.npmjs.org/@dcloudio%2ftypes cache-miss
+20 silly logfile done cleaning log files
+21 http cache https://registry.npmjs.org/@dcloudio%2ftypes 9ms (cache hit)
+22 silly packumentCache full:https://registry.npmjs.org/@dcloudio%2ftypes set size:502202 disposed:false
+23 silly fetch manifest @dcloudio/types@3.4.28
+24 silly packumentCache full:https://registry.npmjs.org/@dcloudio%2ftypes cache-hit
+25 verbose stack Error: unable to resolve dependency tree
+25 verbose stack     at #failPeerConflict (D:\nodejs\node_modules\npm\node_modules\@npmcli\arborist\lib\arborist\build-ideal-tree.js:1402:25)
+25 verbose stack     at #loadPeerSet (D:\nodejs\node_modules\npm\node_modules\@npmcli\arborist\lib\arborist\build-ideal-tree.js:1368:33)
+25 verbose stack     at async #buildDepStep (D:\nodejs\node_modules\npm\node_modules\@npmcli\arborist\lib\arborist\build-ideal-tree.js:916:11)
+25 verbose stack     at async Arborist.buildIdealTree (D:\nodejs\node_modules\npm\node_modules\@npmcli\arborist\lib\arborist\build-ideal-tree.js:170:7)
+25 verbose stack     at async Promise.all (index 1)
+25 verbose stack     at async Arborist.reify (D:\nodejs\node_modules\npm\node_modules\@npmcli\arborist\lib\arborist\reify.js:110:5)
+25 verbose stack     at async Install.exec (D:\nodejs\node_modules\npm\lib\commands\install.js:151:5)
+25 verbose stack     at async Npm.exec (D:\nodejs\node_modules\npm\lib\npm.js:208:9)
+25 verbose stack     at async module.exports (D:\nodejs\node_modules\npm\lib\cli\entry.js:67:5)
+26 error code ERESOLVE
+27 error ERESOLVE unable to resolve dependency tree
+28 error
+29 error While resolving: yoom-app-frontend@1.0.0
+29 error Found: @dcloudio/types@3.4.29[2m[22m
+29 error [2mnode_modules/@dcloudio/types[22m
+29 error   [34mdev[39m @dcloudio/types@"3.4.29" from the root project
+29 error
+29 error Could not resolve dependency:
+29 error [95mpeer[39m @dcloudio/types@"3.4.28" from @dcloudio/uni-app@3.0.0-5000320260312001[2m[22m
+29 error [2mnode_modules/@dcloudio/uni-app[22m
+29 error   @dcloudio/uni-app@"3.0.0-5000320260312001" from the root project
+29 error
+29 error Fix the upstream dependency conflict, or retry
+29 error this command with --force or --legacy-peer-deps
+29 error to accept an incorrect (and potentially broken) dependency resolution.
+30 error
+30 error
+30 error For a full report see:
+30 error C:\Users\86137\Desktop\work\app\Yoom-App\frontend\.npm-cache\_logs\2026-03-17T07_31_08_910Z-eresolve-report.txt
+31 silly unfinished npm timer reify 1773732669452
+32 silly unfinished npm timer reify:loadTrees 1773732669453
+33 silly unfinished npm timer idealTree:buildDeps 1773732669470
+34 silly unfinished npm timer idealTree:#root 1773732669471
+35 verbose cwd C:\Users\86137\Desktop\work\app\Yoom-App\frontend
+36 verbose os Windows_NT 10.0.26200
+37 verbose node v24.14.0
+38 verbose npm  v11.9.0
+39 verbose exit 1
+40 verbose code 1
+41 error A complete log of this run can be found in: C:\Users\86137\Desktop\work\app\Yoom-App\frontend\.npm-cache\_logs\2026-03-17T07_31_08_910Z-debug-0.log

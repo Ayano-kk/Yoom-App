@@ -1,0 +1,16 @@
+{
+  "pages": [
+    {
+      "path": "pages/index/index",
+      "style": {
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": true
+      }
+    }
+  ],
+  "globalStyle": {
+    "backgroundColor": "#F5F8FF",
+    "backgroundTextStyle": "dark",
+    "navigationBarTextStyle": "black"
+  }
+}
